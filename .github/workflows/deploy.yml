@@ -1,0 +1,71 @@
+name: Barrier-free Love Pages
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: "pages"
+  cancel-in-progress: true
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Generate static site
+        run: |
+          mkdir -p site
+          cat > site/index.html << 'EOF'
+          <!DOCTYPE html>
+          <html lang="zh-CN">
+          <head>
+            <meta charset="utf-8" />
+            <meta name="viewport" content="width=device-width, initial-scale=1" />
+            <title>Barrier-free Love</title>
+            <style>
+              :root { color-scheme: light dark; }
+              body { margin: 0; font-family: system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, 'Noto Sans', 'Noto Sans CJK SC', sans-serif; background: #111827; color: #e5e7eb; }
+              .wrap { min-height: 100vh; display: grid; place-items: center; padding: 2rem; }
+              .card { max-width: 44rem; width: 100%; background: #1f2937; border: 1px solid #374151; border-radius: 12px; padding: 2rem; box-shadow: 0 10px 30px rgba(0,0,0,.3); }
+              .title { font-size: clamp(1.8rem, 3vw, 2.4rem); margin: 0 0 1rem; letter-spacing: .02em; }
+              .desc { font-size: clamp(1rem, 2vw, 1.125rem); line-height: 1.7; }
+              .btn { margin-top: 1.5rem; display: inline-block; padding: .75rem 1rem; border-radius: 8px; background: #10b981; color: #0b0f14; text-decoration: none; font-weight: 600; }
+              .btn:focus { outline: 3px solid #34d399; outline-offset: 2px; }
+              .skip { position: absolute; left: -9999px; top: -9999px; }
+              .skip:focus { left: 1rem; top: 1rem; background: #f59e0b; color: #0b0f14; padding: .5rem .75rem; border-radius: 8px; }
+            </style>
+          </head>
+          <body>
+            <a href="#main" class="skip">跳到主要内容</a>
+            <div class="wrap">
+              <main id="main" class="card" role="main" aria-label="主要内容">
+                <h1 class="title">Barrier-free Love</h1>
+                <p class="desc">一个无障碍友好的站点占位页，已通过 GitHub Actions 自动生成并部署到 GitHub Pages。</p>
+                <p class="desc">后续可以把你的真实页面内容接入到自动部署流程，不需要手动上传文件。</p>
+                <a class="btn" href="https://wlkqyang-star.github.io/lins-cyber-clinic/">查看原项目</a>
+              </main>
+            </div>
+          </body>
+          </html>
+          EOF
+      - name: Upload artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: site
+
+  deploy:
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    needs: build
+    runs-on: ubuntu-latest
+    steps:
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
