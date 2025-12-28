@@ -1,0 +1,221 @@
+@import url('https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;700&family=Noto+Sans+SC:wght@300;400;500;700&family=Ma+Shan+Zheng&display=swap');
+@import "tw-animate-css";
+@import "tailwindcss";
+
+@custom-variant dark (&:is(.dark *));
+
+/* Hide default cursor globally */
+html, body, a, button, input, select, textarea {
+  cursor: none !important;
+}
+
+@theme inline {
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --color-chart-1: var(--chart-1);
+  --color-chart-2: var(--chart-2);
+  --color-chart-3: var(--chart-3);
+  --color-chart-4: var(--chart-4);
+  --color-chart-5: var(--chart-5);
+  --color-sidebar: var(--sidebar);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar-primary: var(--sidebar-primary);
+  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+  --color-sidebar-accent: var(--sidebar-accent);
+  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+  --color-sidebar-border: var(--sidebar-border);
+  --color-sidebar-ring: var(--sidebar-ring);
+}
+
+:root {
+  /* Design Philosophy: Emotional Resonance & Narrative Immersion */
+  /* Dark Theme by default for immersion */
+  
+  /* Deep Blue - Solitude & Depth */
+  --primary: #0F172A; 
+  --primary-foreground: #F8FAFC;
+  
+  /* Warm Amber - Hope & Light */
+  --secondary: #F59E0B;
+  --secondary-foreground: #020617;
+  
+  /* Soft Pink - Love & Emotion */
+  --accent: #EC4899;
+  --accent-foreground: #F8FAFC;
+  
+  /* Night Black - Immersion */
+  --background: #020617;
+  --foreground: #E2E8F0;
+  
+  --card: #0F172A;
+  --card-foreground: #E2E8F0;
+  
+  --popover: #0F172A;
+  --popover-foreground: #E2E8F0;
+  
+  --muted: #1E293B;
+  --muted-foreground: #94A3B8;
+  
+  --destructive: #EF4444;
+  --destructive-foreground: #F8FAFC;
+  
+  --border: #1E293B;
+  --input: #1E293B;
+  --ring: #F59E0B;
+  
+  --radius: 0.5rem;
+  
+  /* Chart Colors */
+  --chart-1: #F59E0B; /* Amber */
+  --chart-2: #EC4899; /* Pink */
+  --chart-3: #3B82F6; /* Blue */
+  --chart-4: #10B981; /* Emerald */
+  --chart-5: #8B5CF6; /* Violet */
+  
+  --sidebar: #020617;
+  --sidebar-foreground: #E2E8F0;
+  --sidebar-primary: #F59E0B;
+  --sidebar-primary-foreground: #020617;
+  --sidebar-accent: #1E293B;
+  --sidebar-accent-foreground: #F8FAFC;
+  --sidebar-border: #1E293B;
+  --sidebar-ring: #F59E0B;
+  
+  /* Fonts */
+  --font-serif: 'Noto Serif SC', serif;
+  --font-sans: 'Noto Sans SC', sans-serif;
+  --font-hand: 'Ma Shan Zheng', cursive;
+}
+
+/* Dark theme is the default and only theme for this design */
+.dark {
+  /* Same as root */
+  --primary: #0F172A; 
+  --primary-foreground: #F8FAFC;
+  --secondary: #F59E0B;
+  --secondary-foreground: #020617;
+  --accent: #EC4899;
+  --accent-foreground: #F8FAFC;
+  --background: #020617;
+  --foreground: #E2E8F0;
+  --card: #0F172A;
+  --card-foreground: #E2E8F0;
+  --popover: #0F172A;
+  --popover-foreground: #E2E8F0;
+  --muted: #1E293B;
+  --muted-foreground: #94A3B8;
+  --destructive: #EF4444;
+  --destructive-foreground: #F8FAFC;
+  --border: #1E293B;
+  --input: #1E293B;
+  --ring: #F59E0B;
+  --chart-1: #F59E0B;
+  --chart-2: #EC4899;
+  --chart-3: #3B82F6;
+  --chart-4: #10B981;
+  --chart-5: #8B5CF6;
+  --sidebar: #020617;
+  --sidebar-foreground: #E2E8F0;
+  --sidebar-primary: #F59E0B;
+  --sidebar-primary-foreground: #020617;
+  --sidebar-accent: #1E293B;
+  --sidebar-accent-foreground: #F8FAFC;
+  --sidebar-border: #1E293B;
+  --sidebar-ring: #F59E0B;
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+  body {
+    @apply bg-background text-foreground font-sans antialiased selection:bg-accent selection:text-accent-foreground;
+    /* cursor: none; Hide default cursor - Commented out to ensure cursor visibility */
+  }
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-serif tracking-tight;
+  }
+  .font-hand {
+    font-family: var(--font-hand);
+  }
+  button:not(:disabled),
+  [role="button"]:not([aria-disabled="true"]),
+  [type="button"]:not(:disabled),
+  [type="submit"]:not(:disabled),
+  [type="reset"]:not(:disabled),
+  a[href],
+  select:not(:disabled),
+  input[type="checkbox"]:not(:disabled),
+  input[type="radio"]:not(:disabled) {
+    @apply cursor-pointer;
+  }
+}
+
+@layer components {
+  /**
+   * Custom container utility that centers content and adds responsive padding.
+   *
+   * This overrides Tailwind's default container behavior to:
+   * - Auto-center content (mx-auto)
+   * - Add responsive horizontal padding
+   * - Set max-width for large screens
+   *
+   * Usage: <div className="container">...</div>
+   *
+   * For custom widths, use max-w-* utilities directly:
+   * <div className="max-w-6xl mx-auto px-4">...</div>
+   */
+  .container {
+    width: 100%;
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: 1rem; /* 16px - mobile padding */
+    padding-right: 1rem;
+  }
+
+  .flex {
+    min-height: 0;
+    min-width: 0;
+  }
+  
+  /* Text Highlight Effect */
+  .text-highlight {
+    @apply bg-[#d46b6b] text-white px-0.5 rounded-sm box-decoration-clone;
+  }
+
+  @media (min-width: 640px) {
+    .container {
+      padding-left: 1.5rem; /* 24px - tablet padding */
+      padding-right: 1.5rem;
+    }
+  }
+
+  @media (min-width: 1024px) {
+    .container {
+      padding-left: 2rem; /* 32px - desktop padding */
+      padding-right: 2rem;
+      max-width: 80rem; /* 1280px - max width */
+    }
+  }
+}
