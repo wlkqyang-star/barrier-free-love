@@ -597,38 +597,39 @@ const Chapter2Section = () => {
   const embed = dataVisualization?.embed;
 
   const { src: bgImage, opacity: bgOpacity } = (() => {
+    const BASE = import.meta.env.BASE_URL;
     // Range 1: Chapter 1 end (Index 6-8)
     if (currentChapter === 'chapter1' && currentIndex >= 6) {
-      return { src: "/images/chapter2/background1.png", opacity: 0.6 };
+      return { src: BASE + "images/chapter2/background1.png", opacity: 0.6 };
     }
     // Range 2: Chapter 2 transition (Narrator only)
     if (currentChapter === 'chapter2') {
-      return { src: "/images/chapter2/background2.png", opacity: 0.6 };
+      return { src: BASE + "images/chapter2/background2.png", opacity: 0.6 };
     }
     // Topic Dialogues (Age, Education, Disability) - Revert to normal background
     if (TOPIC_DIALOGUES.has(currentChapter)) {
-      return { src: "/images/chapter2/background.png", opacity: 1 };
+      return { src: BASE + "images/chapter2/background.png", opacity: 1 };
     }
     // Fertility Dialogue
     if (currentChapter === 'fertilityDialogue' || currentChapter === 'chapter5') {
-       if (currentIndex > 14) return { src: "/images/chapter2/ending_bg_2.png", opacity: 1 };
+       if (currentIndex > 14) return { src: BASE + "images/chapter2/ending_bg_2.png", opacity: 1 };
        return (currentNode?.speaker !== 'narrator' && currentNode?.type !== 'choice')
-         ? { src: "/images/chapter2/background.png", opacity: 1 }
-         : { src: "/images/chapter2/bg_narrate.png", opacity: 1 };
+         ? { src: BASE + "images/chapter2/background.png", opacity: 1 }
+         : { src: BASE + "images/chapter2/bg_narrate.png", opacity: 1 };
     }
     // Default Fallback
     return (currentNode?.speaker !== 'narrator' && currentNode?.type !== 'choice')
-      ? { src: "/images/chapter2/background.png", opacity: 1 }
-      : { src: "/images/chapter2/bg_narrate.png", opacity: 1 };
+      ? { src: BASE + "images/chapter2/background.png", opacity: 1 }
+      : { src: BASE + "images/chapter2/bg_narrate.png", opacity: 1 };
   })();
 
   return (
     <>
       {/* Chapter 2 Cover */}
-      <div id="chapter2" className="h-screen relative flex items-center justify-center snap-start overflow-hidden bg-[#112030]" style={{ backgroundImage: 'url("/images/bg_texture.png")', backgroundSize: 'cover', backgroundPosition: 'center' }}>
+      <div id="chapter2" className="h-screen relative flex items-center justify-center snap-start overflow-hidden bg-[#112030]" style={{ backgroundImage: `url("${import.meta.env.BASE_URL}images/bg_texture.png")`, backgroundSize: 'cover', backgroundPosition: 'center' }}>
         <div className="absolute inset-0 w-full h-full">
            <img 
-             src="/images/chapter_covers/chapter2_cover_real.png" 
+             src={import.meta.env.BASE_URL + "images/chapter_covers/chapter2_cover_real.png"} 
              alt="第二章 转向" 
              className="w-full h-full object-cover object-center"
            />
@@ -638,7 +639,7 @@ const Chapter2Section = () => {
       <section 
         ref={storyRef}
         className="min-h-screen relative overflow-hidden flex flex-col snap-start bg-[#0e1a24]"
-        style={{ backgroundImage: 'url("/images/chapter_covers/背景长图.png")', backgroundSize: 'cover', backgroundPosition: 'center' }}
+        style={{ backgroundImage: `url("${import.meta.env.BASE_URL}images/chapter_covers/背景长图.png")`, backgroundSize: 'cover', backgroundPosition: 'center' }}
       >
       {/* Background Image - Only visible for narration/choice or if we want it persistent */}
       <div 

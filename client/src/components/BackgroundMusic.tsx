@@ -44,7 +44,7 @@ export function BackgroundMusic() {
 
   return (
     <div className="fixed top-20 right-4 z-50 md:top-24 md:right-8">
-      <audio ref={audioRef} loop src="/music/bgm.mp3" />
+      <audio ref={audioRef} loop src={import.meta.env.BASE_URL + "music/bgm.mp3"} />
       <button
         type="button"
         onClick={togglePlay}
@@ -55,7 +55,7 @@ export function BackgroundMusic() {
         title={isPlaying ? "关闭音乐" : "播放音乐"}
       >
         <img 
-            src="/images/music-icon.png" 
+            src={import.meta.env.BASE_URL + "images/music-icon.png"} 
             alt="Music Toggle" 
             className="w-full h-full object-contain drop-shadow-lg"
         />

@@ -85,7 +85,7 @@ export function AIChat() {
       {/* Header */}
       <div className="bg-slate-800 p-4 border-b border-slate-700 flex items-center gap-3">
         <div className="w-10 h-10 rounded-full bg-pink-500/20 flex items-center justify-center border border-pink-500/50">
-          <img src="/images/xiaoyu.png" className="w-full h-full object-cover rounded-full" alt="晓雨" onError={(e) => e.currentTarget.src = "https://github.com/shadcn.png"} />
+          <img src={import.meta.env.BASE_URL + "images/xiaoyu.png"} className="w-full h-full object-cover rounded-full" alt="晓雨" onError={(e) => e.currentTarget.src = "https://github.com/shadcn.png"} />
         </div>
         <div>
           <h3 className="text-white font-bold">晓雨</h3>

@@ -47,7 +47,7 @@ export function CustomCursor() {
       }}
     >
       <img 
-        src="/images/cursor.png" 
+        src={import.meta.env.BASE_URL + "images/cursor.png"} 
         alt="Custom Cursor" 
         className="w-16 h-16 object-contain drop-shadow-lg"
       />
