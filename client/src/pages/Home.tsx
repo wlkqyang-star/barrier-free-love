@@ -960,13 +960,21 @@ const Chapter2Section = () => {
                       ? 'flex flex-wrap gap-5'
                       : embed.layout === 'column'
                         ? 'flex flex-col gap-6'
-                        : undefined
+                        : embed.layout === 'twoTopOneBottom'
+                          ? 'grid grid-cols-1 md:grid-cols-2 gap-5'
+                          : undefined
                   }
                 >
-                  {embed.frames.map((frame) => (
+                  {embed.frames.map((frame, frameIndex) => (
                     <div
                       key={frame.src}
-                      className={embed.layout === 'single' ? undefined : 'flex-1'}
+                      className={
+                        embed.layout === 'single'
+                          ? undefined
+                          : embed.layout === 'twoTopOneBottom'
+                            ? (frameIndex === 2 ? 'md:col-span-2' : undefined)
+                            : 'flex-1'
+                      }
                       style={embed.layout === 'single' ? undefined : { minWidth: embed.minWidth ? `${embed.minWidth}px` : undefined }}
                     >
                       {frame.title ? (

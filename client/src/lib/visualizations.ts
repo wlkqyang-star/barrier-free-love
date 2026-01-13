@@ -5,7 +5,7 @@ export type DataVisualization = {
   source: string;
   description: string;
   embed?: {
-    layout: 'single' | 'row' | 'column';
+    layout: 'single' | 'row' | 'column' | 'twoTopOneBottom';
     minWidth?: number;
     frames: Array<{
       title?: string;
@@ -111,9 +111,11 @@ export const DATA_VISUALIZATIONS: Record<string, DataVisualization> = {
     source: '爬取“站长之家”TOP 5的残疾人征婚平台中截止2025年11月的相关数据，经清洗，搜集9903条有效用户信息',
     description: '残疾人生育与婚恋态度',
     embed: {
-      layout: 'single',
+      layout: 'twoTopOneBottom',
       frames: [
-        { src: 'https://public.flourish.studio/visualisation/26808186/embed', height: '400px' },
+        { src: 'https://public.flourish.studio/visualisation/26808186/embed', height: '320px' },
+        { src: 'https://public.flourish.studio/visualisation/26808409/embed', height: '320px' },
+        { src: 'https://public.flourish.studio/visualisation/26807959/embed', height: '720px' },
       ],
     },
   },
