@@ -86,7 +86,7 @@ export default function Chapter2() {
       
       {/* Background Ambience */}
       <div className="absolute inset-0 bg-gradient-to-b from-slate-900 via-slate-800 to-slate-900 opacity-80" />
-      <div className="absolute inset-0 bg-[url('/images/noise.png')] opacity-[0.05] pointer-events-none" />
+      {/* <div className="absolute inset-0 bg-[url('/images/noise.png')] opacity-[0.05] pointer-events-none" /> */}
 
       {/* Characters Layer */}
       <div className="absolute inset-0 z-10 pointer-events-none flex items-end justify-between px-[10%] pb-0">
