@@ -17,24 +17,25 @@ const highlightClass = "bg-[#F08080] text-white px-2 py-1 rounded-sm mx-1 shadow
 
 // 封面
   const CoverSection = () => {
+    const BASE = import.meta.env.BASE_URL;
     const characters = [
-      { src: "/images/cover/无2.png", alt: "无", delay: 0.5, yOffset: -70 },
-      { src: "/images/cover/碍.png", alt: "碍", delay: 1.0, yOffset: -50 },
-      { src: "/images/cover/才.png", alt: "才", delay: 1.5, yOffset: -10 },
-      { src: "/images/cover/能.png", alt: "能", delay: 2.0, yOffset: -120 },
-      { src: "/images/cover/爱.png", alt: "爱", delay: 2.5, yOffset: -160 },
+      { src: BASE + "images/cover/无2.png", alt: "无", delay: 0.5, yOffset: -70 },
+      { src: BASE + "images/cover/碍.png", alt: "碍", delay: 1.0, yOffset: -50 },
+      { src: BASE + "images/cover/才.png", alt: "才", delay: 1.5, yOffset: -10 },
+      { src: BASE + "images/cover/能.png", alt: "能", delay: 2.0, yOffset: -120 },
+      { src: BASE + "images/cover/爱.png", alt: "爱", delay: 2.5, yOffset: -160 },
     ];
 
     return (
       <section 
         id="cover" 
         className="min-h-screen flex flex-col items-center justify-center relative overflow-hidden snap-start bg-[#1a2c42]"
-        style={{ backgroundImage: 'url("/images/chapter_covers/背景长图.png")', backgroundSize: 'cover', backgroundPosition: 'center' }}
+        style={{ backgroundImage: `url("${BASE}images/chapter_covers/背景长图.png")`, backgroundSize: 'cover', backgroundPosition: 'center' }}
       >
         {/* Background Image - Full screen cover */}
         <div className="absolute inset-0 w-full h-full">
           <motion.img 
-            src="/images/cover/封面.png" 
+            src={BASE + "images/cover/封面.png"} 
             alt="Background" 
             className="w-full h-full object-cover object-center"
             initial={{ opacity: 0 }}
@@ -84,25 +85,26 @@ const highlightClass = "bg-[#F08080] text-white px-2 py-1 rounded-sm mx-1 shadow
 
 // 引言：被“隐形”的婚恋需求
 const IntroSection = () => {
+  const BASE = import.meta.env.BASE_URL;
   const introSteps = [
     {
       id: "survival", 
       title: "生存",
-      image: "/images/intro/survival.png",
+      image: BASE + "images/intro/survival.png",
       text: "当公众的目光投向他们时，\n焦点往往落在“生存”、“保障”、“福利”\n这些沉甸甸的词汇上。",
       beamColor: "from-amber-100/20"
     },
     {
       id: "guarantee",
       title: "保障", 
-      image: "/images/intro/guarantee.png",
+      image: BASE + "images/intro/guarantee.png",
       text: "当公众的目光投向他们时，\n焦点往往落在“生存”、“保障”、“福利”\n这些沉甸甸的词汇上。",
       beamColor: "from-blue-100/20"
     },
     {
       id: "welfare",
       title: "福利",
-      image: "/images/intro/welfare.png", 
+      image: BASE + "images/intro/welfare.png", 
       text: "当公众的目光投向他们时，\n焦点往往落在“生存”、“保障”、“福利”\n这些沉甸甸的词汇上。",
       beamColor: "from-emerald-100/20"
     }
@@ -111,7 +113,7 @@ const IntroSection = () => {
   return (
     <>
       {/* 1. Cover Slide (Exact Match Image 1) */}
-      <div id="intro" className="h-screen relative flex items-center justify-center snap-start overflow-hidden bg-[#112030]" style={{ backgroundImage: 'url("/images/chapter_covers/背景长图.png")', backgroundSize: 'cover', backgroundPosition: 'center' }}>
+      <div id="intro" className="h-screen relative flex items-center justify-center snap-start overflow-hidden bg-[#112030]" style={{ backgroundImage: `url("${BASE}images/chapter_covers/背景长图.png")`, backgroundSize: 'cover', backgroundPosition: 'center' }}>
         <div className="absolute inset-0 w-full h-full overflow-hidden">
             {/* Full Screen Intro Image */}
             <motion.div 
@@ -122,7 +124,7 @@ const IntroSection = () => {
               className="absolute inset-0 w-full h-full"
             >
                <img 
-                 src="/images/intro/full_intro.png" 
+                 src={BASE + "images/intro/full_intro.png"} 
                  alt="引言" 
                  className="w-full h-full object-cover object-center"
                />
@@ -131,7 +133,7 @@ const IntroSection = () => {
       </div>
 
       {/* 1.5 Data Visualization Section (Moved to Top) */}
-      <div className="min-h-screen relative flex flex-col items-center justify-center snap-start overflow-hidden bg-[#112030] py-20" style={{ backgroundImage: 'url("/images/chapter_covers/背景长图.png")', backgroundSize: 'cover', backgroundPosition: 'center' }}>
+      <div className="min-h-screen relative flex flex-col items-center justify-center snap-start overflow-hidden bg-[#112030] py-20" style={{ backgroundImage: `url("${BASE}images/chapter_covers/背景长图.png")`, backgroundSize: 'cover', backgroundPosition: 'center' }}>
         
         {/* Intro Text 1 */}
         <motion.div
@@ -195,11 +197,11 @@ const IntroSection = () => {
       {/* 2. Spotlight Slides (Sticky Layout) */}
       <div className="relative h-[300vh]">
          {/* Sticky Background & Left Content */}
-         <div className="sticky top-0 h-screen w-full overflow-hidden bg-[#112030]" style={{ backgroundImage: 'url("/images/chapter_covers/背景长图.png")', backgroundSize: 'cover', backgroundPosition: 'center' }}>
+         <div className="sticky top-0 h-screen w-full overflow-hidden bg-[#112030]" style={{ backgroundImage: `url("${BASE}images/chapter_covers/背景长图.png")`, backgroundSize: 'cover', backgroundPosition: 'center' }}>
             {/* Beam Layer */}
             <div className="absolute inset-0 pointer-events-none z-0 flex justify-center">
                <motion.img 
-                  src="/images/intro/beam.png"
+                  src={BASE + "images/intro/beam.png"}
                   initial={{ opacity: 0, scaleY: 0, originY: 0 }}
                   whileInView={{ opacity: 1, scaleY: 1 }}
                   transition={{ duration: 1 }}
@@ -244,7 +246,7 @@ const IntroSection = () => {
       </div>
 
       {/* 2.5 Portrait Slide (New Independent Slide) */}
-      <div className="h-screen relative flex items-center justify-center snap-start overflow-hidden border-t border-white/5 bg-[#112030]" style={{ backgroundImage: 'url("/images/chapter_covers/背景长图.png")', backgroundSize: 'cover', backgroundPosition: 'center' }}>
+      <div className="h-screen relative flex items-center justify-center snap-start overflow-hidden border-t border-white/5 bg-[#112030]" style={{ backgroundImage: `url("${BASE}images/chapter_covers/背景长图.png")`, backgroundSize: 'cover', backgroundPosition: 'center' }}>
          <div className="absolute inset-0 w-full h-full overflow-hidden">
              
              {/* Beam Layer Removed as requested */}
@@ -258,7 +260,7 @@ const IntroSection = () => {
                     className="w-full md:w-1/2 flex justify-center md:justify-end"
                  >
                      <img 
-                        src="/images/intro/portrait_group.png" 
+                        src={BASE + "images/intro/portrait_group.png"} 
                         alt="Portrait Group"
                         className="w-[80%] h-auto object-contain drop-shadow-2xl"
                      />
@@ -286,14 +288,14 @@ const IntroSection = () => {
          <div className="absolute inset-0 z-0 overflow-hidden">
              <div className="absolute bottom-0 left-0 right-0 h-1/2 bg-gradient-to-t from-white/5 to-transparent blur-3xl" />
              <motion.img 
-               src="/images/intro/cloud1.png" 
+               src={BASE + "images/intro/cloud1.png"} 
                initial={{ x: 0, opacity: 0.8 }}
                whileInView={{ x: -100, opacity: 0.4 }}
                transition={{ duration: 8, ease: "easeOut" }}
                className="absolute top-[10%] left-[-10%] w-[60%] mix-blend-overlay" 
              />
              <motion.img 
-               src="/images/intro/cloud2.png" 
+               src={BASE + "images/intro/cloud2.png"} 
                initial={{ x: 0, opacity: 0.8 }}
                whileInView={{ x: 100, opacity: 0.4 }}
                transition={{ duration: 8, ease: "easeOut" }}
@@ -340,22 +342,22 @@ const IntroSection = () => {
 
 // 第一章 纯爱
 const Chapter1Section = () => {
-
+  const BASE = import.meta.env.BASE_URL;
 
   return (
     <>
       {/* Chapter 1 Cover */}
-      <div id="chapter1" className="h-screen relative flex items-center justify-center snap-start overflow-hidden bg-[#112030]" style={{ backgroundImage: 'url("/images/chapter_covers/背景长图.png")', backgroundSize: 'cover', backgroundPosition: 'center' }}>
+      <div id="chapter1" className="h-screen relative flex items-center justify-center snap-start overflow-hidden bg-[#112030]" style={{ backgroundImage: `url("${BASE}images/chapter_covers/背景长图.png")`, backgroundSize: 'cover', backgroundPosition: 'center' }}>
         <div className="absolute inset-0 w-full h-full">
            <img 
-             src="/images/chapter_covers/chapter1_cover_real.png" 
+             src={BASE + "images/chapter_covers/chapter1_cover_real.png"} 
              alt="第一章 纯爱" 
              className="w-full h-full object-cover object-center"
            />
         </div>
       </div>
 
-      <section className="min-h-screen py-20 relative snap-start bg-[#112030]" style={{ backgroundImage: 'url("/images/chapter_covers/背景长图.png")', backgroundSize: 'cover', backgroundPosition: 'center' }}>
+      <section className="min-h-screen py-20 relative snap-start bg-[#112030]" style={{ backgroundImage: `url("${BASE}images/chapter_covers/背景长图.png")`, backgroundSize: 'cover', backgroundPosition: 'center' }}>
         <div className="container mx-auto px-4 max-w-4xl">
           
           {/* 1. Pure Love Section (Heart) */}
@@ -367,7 +369,7 @@ const Chapter1Section = () => {
                className="mb-6"
              >
                 <img 
-                  src="/images/chapter1/heart.png" 
+                  src={BASE + "images/chapter1/heart.png"} 
                   alt="Pure Love" 
                   className="w-24 h-24 md:w-32 md:h-32 object-contain drop-shadow-[0_0_15px_rgba(236,72,153,0.5)]" 
                 />
@@ -434,7 +436,7 @@ const Chapter1Section = () => {
             className="mb-12 w-full"
           >
              <img 
-               src="/images/chapter1/needs_voronoi.png" 
+               src={BASE + "images/chapter1/needs_voronoi.png"} 
                alt="征婚平台需求维诺图" 
                className="w-full h-auto object-contain"
              />
@@ -467,7 +469,7 @@ const Chapter1Section = () => {
                 {/* Background Full Width Image */}
                 <div className="absolute left-1/2 -translate-x-1/2 w-screen max-w-none">
                   <img 
-                    src="/images/chapter1/fire_water.png" 
+                    src={BASE + "images/chapter1/fire_water.png"} 
                     alt="Fire and Water" 
                     className="w-full h-auto object-cover opacity-80" 
                   />
@@ -506,7 +508,7 @@ const Chapter2Section = () => {
   useEffect(() => {
     // Check if we are in a dialogue node (not narrator, not choice)
     if (currentNode?.type === 'text' && currentNode.speaker !== 'narrator' && currentIndex === 0) {
-        const audio = new Audio('/audio/message.mp3');
+        const audio = new Audio(import.meta.env.BASE_URL + 'audio/message.mp3');
         audio.play().catch(e => console.error("Audio play failed", e));
     }
   }, [currentChapter, currentIndex]);
@@ -688,8 +690,8 @@ const Chapter2Section = () => {
                             <img 
                                 src={
                                     isCurrent 
-                                    ? (isXiaoyu ? "/images/chapter2/bubble_large_left.png" : "/images/chapter2/bubble_large_right.png")
-                                    : (isXiaoyu ? "/images/chapter2/bubble_small_left.png" : "/images/chapter2/bubble_small_right.png")
+                                    ? (isXiaoyu ? import.meta.env.BASE_URL + "images/chapter2/bubble_large_left.png" : import.meta.env.BASE_URL + "images/chapter2/bubble_large_right.png")
+                                    : (isXiaoyu ? import.meta.env.BASE_URL + "images/chapter2/bubble_small_left.png" : import.meta.env.BASE_URL + "images/chapter2/bubble_small_right.png")
                                 }
                                 className="absolute inset-0 w-full h-full object-contain"
                                 alt="bubble"
@@ -723,9 +725,9 @@ const Chapter2Section = () => {
             const isFertility = currentChapter === 'fertilityDialogue' || currentChapter === 'chapter5';
             let charSrc = char.standingImg;
             if (isXiaoyu) {
-              charSrc = isFertility ? '/images/chapter2/xiaoyu_new.png' : '/images/chapter2/xiaoyu_seated.png';
+              charSrc = isFertility ? import.meta.env.BASE_URL + 'images/chapter2/xiaoyu_new.png' : import.meta.env.BASE_URL + 'images/chapter2/xiaoyu_seated.png';
             } else if (isLiming) {
-              charSrc = isFertility ? '/images/chapter2/liming_new.png' : '/images/chapter2/liming_standing.png';
+              charSrc = isFertility ? import.meta.env.BASE_URL + 'images/chapter2/liming_new.png' : import.meta.env.BASE_URL + 'images/chapter2/liming_standing.png';
             }
 
             return (
@@ -1017,20 +1019,21 @@ const Chapter2Section = () => {
 
 // 第三章 成本
 const Chapter3Section = () => {
+  const BASE = import.meta.env.BASE_URL;
   return (
     <>
       {/* Chapter 3 Cover */}
-      <div id="chapter3" className="h-screen relative flex items-center justify-center snap-start overflow-hidden bg-[#112030]" style={{ backgroundImage: 'url("/images/bg_texture.png")', backgroundSize: 'cover', backgroundPosition: 'center' }}>
+      <div id="chapter3" className="h-screen relative flex items-center justify-center snap-start overflow-hidden bg-[#112030]" style={{ backgroundImage: `url("${BASE}images/bg_texture.png")`, backgroundSize: 'cover', backgroundPosition: 'center' }}>
         <div className="absolute inset-0 w-full h-full">
            <img 
-             src="/images/chapter_covers/chapter3_cover_real.png" 
+             src={BASE + "images/chapter_covers/chapter3_cover_real.png"} 
              alt="第三章 成本" 
              className="w-full h-full object-cover object-center"
            />
         </div>
       </div>
 
-      <section className="min-h-screen py-20 relative snap-start bg-[#112030]" style={{ backgroundImage: 'url("/images/chapter_covers/背景长图.png")', backgroundSize: 'cover', backgroundPosition: 'center' }}>
+      <section className="min-h-screen py-20 relative snap-start bg-[#112030]" style={{ backgroundImage: `url("${BASE}images/chapter_covers/背景长图.png")`, backgroundSize: 'cover', backgroundPosition: 'center' }}>
       <div className="container mx-auto px-4 max-w-4xl">
 
         <div className="prose prose-invert prose-lg mx-auto mb-20 text-gray-300 [&_p]:text-left [&_p]:indent-[2em]">
@@ -1113,7 +1116,7 @@ const Chapter3Section = () => {
         {/* Full Screen End Image for Chapter 3 */}
         <div className="relative w-full h-screen snap-start">
            <img 
-             src="/images/chapter3/chapter3_end_full.png" 
+             src={BASE + "images/chapter3/chapter3_end_full.png"} 
              alt="Chapter 3 End" 
              className="w-full h-full object-cover"
            />
@@ -1125,13 +1128,14 @@ const Chapter3Section = () => {
 
 // 尾声
 const EpilogueSection = () => {
+  const BASE = import.meta.env.BASE_URL;
   return (
     <>
       {/* Epilogue Cover */}
       <div id="epilogue" className="h-screen relative flex items-center justify-center snap-start overflow-hidden bg-[#112030]">
         <div className="absolute inset-0 w-full h-full">
            <img 
-             src="/images/chapter_covers/epilogue_cover_real.png" 
+             src={BASE + "images/chapter_covers/epilogue_cover_real.png"} 
              alt="尾声" 
              className="w-full h-full object-cover object-center"
            />
@@ -1143,7 +1147,7 @@ const EpilogueSection = () => {
         {/* Background Decoration (formerly at bottom) */}
         <div className="absolute inset-0 pointer-events-none z-0 overflow-hidden flex items-center justify-center opacity-80">
            <img 
-             src="/images/epilogue/ending.png" 
+             src={BASE + "images/epilogue/ending.png"} 
              alt="Background Decoration" 
              className="w-full h-full object-cover object-center mix-blend-multiply" 
            />
@@ -1176,7 +1180,7 @@ const EpilogueSection = () => {
              transition={{ duration: 0.8, delay: 0.2 }}
              className="w-full max-w-2xl mx-auto"
           >
-             <img src="/images/epilogue/danmaku.gif" alt="Danmaku" className="w-full h-auto object-contain mix-blend-multiply" />
+             <img src={BASE + "images/epilogue/danmaku.gif"} alt="Danmaku" className="w-full h-auto object-contain mix-blend-multiply" />
              <div className="text-sm text-muted-foreground text-left mt-4">
                 <p>数据来源：爬取纪录片《有光》、《看得见》、《满塘传奇》、《向阳而生》等七部纪录片，从中得到约3万字文本，经数据清洗和词频分析得到结果。</p>
                 <p>数据时间：2025年11月29日</p>
