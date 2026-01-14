@@ -170,7 +170,7 @@ export default function Chapter2() {
       <Dialog open={!!showDataModal} onOpenChange={(open) => !open && handleReturnToTopics()}>
         <DialogContent className="max-w-4xl bg-card/95 backdrop-blur-xl border-border">
           <DialogHeader>
-            <DialogTitle className="text-2xl font-serif text-secondary text-center w-full">
+            <DialogTitle className="text-2xl font-serif text-white text-center w-full">
               {dataTitle}
             </DialogTitle>
           </DialogHeader>

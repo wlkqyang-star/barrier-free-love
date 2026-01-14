@@ -886,7 +886,7 @@ const Chapter2Section = () => {
       <Dialog open={!!showDataModal} onOpenChange={(open) => !open && handleReturnToTopics()}>
         <DialogContent className="max-w-4xl sm:max-w-4xl max-h-[80vh] overflow-y-auto bg-card/95 backdrop-blur-xl border-border">
           <DialogHeader>
-            <DialogTitle className="text-2xl font-serif text-secondary text-center w-full">
+            <DialogTitle className="text-2xl font-serif text-white text-center w-full">
                 {showDataModal === 'marriage-status'
                   ? "残疾人征婚平台用户群体的过往婚姻状况" 
                   : dataTitle}

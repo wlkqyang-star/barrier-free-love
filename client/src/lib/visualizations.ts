@@ -38,8 +38,7 @@ export const DATA_VISUALIZATIONS: Record<string, DataVisualization> = {
         {
           title: '婚恋需求残疾人性别比',
           src: 'https://public.flourish.studio/visualisation/26801162/embed',
-          aspectRatioPadding: '50%',
-          height: '250px',
+          height: '220px',
         },
       ],
     },
